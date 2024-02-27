@@ -1,0 +1,141 @@
+
+-----------Mongo db installation instruction----------------------
+
+1. Download Mongodb from here
+
+link: https://www.mongodb.com/download-center/community
+
+2. install by double click
+
+3. install finished
+
+4. Go to [ C:\Program Files\MongoDB\Server\4.0\bin ] directory and copy the directory
+
+5. MyComputer/This Pc properties > 
+	Advanced System settings >
+	Environment Variables > 
+	Path (in user variables) > 
+	Edit >
+	new >
+	past the copied directory from instruction 4>
+	ok
+
+6. Go to C drive and create a new folder named [ data ]
+
+7. Go to C > data and create a new folder named [ db ]
+
+8. all setup done.
+
+
+---------- Mongo db Query help -------------
+
+1. Run mongo db [write in cmd]
+	
+	mongod
+
+2. Run mongo db shell [write in cmd] 
+
+	mongo
+
+------------ Some Basic mongo db Query ---------------------
+
+--> list of db show 
+	
+	show dbs
+
+--> Use/connect any db/ create a new db
+
+	use dbname
+Example:
+	use contact
+
+--> All the created/existing table/collection 
+
+	show collections 
+
+--> Create a new collection/table
+
+	db.createCollection("collectionName")
+Example:
+	db.createCollection("contact")
+
+--> Drop a collection/table
+
+	db.collectionName.drop()
+Example:
+	db.contact.drop()
+
+--> All record in the table/collection
+
+	db.collectionName.find() 
+Example:
+	db.contact.find()
+
+--------------------- Insert Query ------------------------------------
+--> Insert data into the collection/table
+
+-- Single insert at a time 
+
+	db.collectionName.insertOne({properties})
+Example:
+	db.user.insertOne({email:"abcd@gmail.com",password:"abcd"}) 
+
+-- Multiple insert at a time 
+
+	db.collectionName.insertMany([
+	{},
+	{},
+	{}
+	...
+	])
+Example:
+	
+	db.user.insertMany([
+	{email:"efgh@gmail.com",password:"abcd"},								{email:"ijkl@gmail.com",password:"abcd"}
+	])
+
+	or
+
+	db.contact.insertMany([
+	{name:"efgh",email:"efgh@gmail.com"},									{name:"ijkl",email:"ijkl@gmail.com"}
+	])
+
+---------------------- Update Query-----------------------------------
+--> single record update
+
+	db.collectionName.updateOne(
+	{ condition },
+	{ $set: { update property },
+	$currentDate: { lastModified: true }
+   	}
+	)
+Example: 
+
+	db.user.updateOne(
+	{ email:"abcd@gmail.com" },
+	{ $set: { password:"12345" },
+	$currentDate: { lastModified: true }
+   	}
+	)
+
+---------------------- Delete Query-----------------------------------
+--> Delete all record from a table/collection 
+
+	db.collectionName.remove({query})  ---->   db.contacts.remove({})  or 
+
+	db.collectionName.deleteMany({})
+	
+Example:
+	db.user.deleteMany({})
+
+--> Delete Single/particular record from a table/collection 
+
+	db.collectionName.deleteOne({email:"abcd@gmail.com"})
+Example:
+	db.user.deleteOne({email:"abcd@gmail.com"})
+
+--> Delete Multiple record with same properties from a table/collection
+
+	db.collectionName.deleteMany({query})
+Example:
+	db.user.deleteMany({password:"abcd"})
