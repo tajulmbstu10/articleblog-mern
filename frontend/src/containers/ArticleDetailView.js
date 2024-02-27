@@ -13,7 +13,7 @@ class ArticleDetail extends Component {
 // For get data from api
     componentDidMount(){
         const articleID = this.props.match.params._id;
-        axios.get(`http://localhost:3000/api/article/${articleID}`)
+        axios.get(`/api/article/${articleID}`)
             .then(res =>{
                 this.setState({
                     article: res.data

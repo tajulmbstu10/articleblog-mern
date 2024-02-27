@@ -11,7 +11,7 @@ class ArticleListView extends Component {
     }
 
     componentDidMount(){
-      axios.get('http://localhost:3000/api/article')
+      axios.get('/api/article')
         .then(res =>{
           this.setState({
             articles: res.data
