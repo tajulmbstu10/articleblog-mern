@@ -32,7 +32,7 @@ class FormInput extends Component {
   switch(requestType){
     // for post request of article 
     case 'post':
-            return axios.post(`http://localhost:3000/api/article`, { 
+            return axios.post(`/api/article`, { 
               title: title,
               description: content
             })
@@ -56,7 +56,7 @@ class FormInput extends Component {
 
     // for edit or update request of article 
     case 'put':
-            return axios.put(`http://localhost:3000/api/article/${articleID}/`, { 
+            return axios.put(`/api/article/${articleID}/`, { 
               title: title,
               description: content })
                   .then(res => {

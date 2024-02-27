@@ -27,7 +27,7 @@ class ArticleDetail extends Component {
         const articleID = this.props.match.params._id;
         const confirm = window.confirm("Are you sure?")
         if(confirm){
-          axios.delete(`http://localhost:3000/api/article/${articleID}`)
+          axios.delete(`/api/article/${articleID}`)
             .then(res=>{
               // console.log(res)
               if(res.status===200){
